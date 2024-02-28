@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meal_app/data/dummy_data.dart';
+import 'package:meal_app/screens/tabs.dart';
 import 'screens/categories.dart';
 import 'screens/meals.dart';
 
@@ -26,7 +27,8 @@ class App extends StatelessWidget {
       
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const Categories(),
+      home: TabsScreen(),
+      //home: const Categories(),
      // home: const MealsScreen(title: "some Categories" , meals: dummyMeals,),
 
     );
