@@ -15,21 +15,26 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Meal> _favoriteMeals = [];
 
 
+  void _showInfoMessage(String message) {
 
 
-  void _toggleMealFavoriteStatus(Meal meal) {  
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message),),);
+  }
 
-final isExisting = _favoriteMeals.contains(meal);
+  void _toggleMealFavoriteStatus(Meal meal) {
+    final isExisting = _favoriteMeals.contains(meal);
 
-if (isExisting) {
-
-
-  _favoriteMeals.remove(meal);
-} else 
-{
-  _favoriteMeals.add(meal);
-}
-
+    if (isExisting) {
+      setState(() {
+        _favoriteMeals.remove(meal);
+      });
+      _showInfoMessage("Meal is no longer a favorite");
+    } else {
+      setState(() {
+        _favoriteMeals.add(meal);
+      });
+    }
   }
 
   void _selectPage(int index) {
@@ -40,11 +45,16 @@ if (isExisting) {
 
   @override
   Widget build(BuildContext context) {
-    Widget activePage =  Categories(onToggleFavorite: _toggleMealFavoriteStatus,);
+    Widget activePage = Categories(
+      onToggleFavorite: _toggleMealFavoriteStatus,
+    );
     var activePageTitle = "categories";
 
     if (_selectedPageIndex == 1) {
-      activePage =  MealsScreen(meals: [], onToggleFavorite: _toggleMealFavoriteStatus,);
+      activePage = MealsScreen(
+        meals: _favoriteMeals,
+        onToggleFavorite: _toggleMealFavoriteStatus,
+      );
       activePageTitle = 'Your Favorites';
     }
 
