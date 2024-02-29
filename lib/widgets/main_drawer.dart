@@ -9,36 +9,37 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
-              padding: const EdgeInsets.all(200),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
+                  gradient: LinearGradient(
+                colors: [
                   Theme.of(context).colorScheme.primaryContainer,
                   Theme.of(context)
                       .colorScheme
                       .primaryContainer
                       .withOpacity(0.8),
-                ], 
-                begin: Alignment.topLeft, 
+                ],
+                begin: Alignment.topLeft,
                 end: Alignment.bottomLeft,
-                ),
-              ),
-             child: Row(
+              )),
+              child: Row(
                 children: [
-                  Icon(Icons.fastfood,
+                  Icon(
+                    Icons.fastfood,
                     size: 48,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   const SizedBox(
                     width: 18,
                   ),
-                 Text(" Cooking up!",
-
-
-
-                 style:Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.primary),),
-               ],
-             ),
-              ),
+                  Text(
+                    "Cooking!",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                  ),
+                ],
+              ))
         ],
       ),
     );
